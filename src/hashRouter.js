@@ -1,29 +1,11 @@
 import Router from "./router.js";
-// Router.navigate();
-
-// adding routes
-// Router.add(/about/, function () {
-// 	console.log("about");
-// })
-// .add(/products\/(.*)\/edit\/(.*)/, function () {
-// 	const [productId, itemId] = arguments;
-// 	console.log("pro2ducts", productId, itemId);
-// 	$("#routeJson").html(`${JSON.stringify({productId, itemId}, null, 4)}`)
-// })
-
-// .check("/products/12/edit/22")
-// .listen();
 
 /**
- * Hub Listener/Emitter Service
+ * Hash Router service
  */
-class HubService {
+class HashRouterService {
     constructor() {
         Router.config({ mode: "hash" });
-        // Router.add(function () {
-        // }).listen();
-        Router.navigate();
-
         return this;
     }
 
@@ -35,17 +17,17 @@ class HubService {
 
     /**
      * Emits an event
-     * @param event - name of event
-     * @param data - data pass
+     * @param url - the hash url you want to navigate like
+     * @example HashRouter.navigate(`/products/12/22/bobby/123/random`);
      */
     navigate = (url) => {
         Router.navigate(url);
     };
 
     /**
-     * Register listener
-     * @param event
-     * @param handler
+     * Register route
+     * @param url with majic variables like :NameOfVariable for a string OR #nameOfNumberVariable for number
+     * @param handler to be called back with route data
      */
     route = (url, handler) => {
         let self = this;
@@ -100,14 +82,12 @@ class HubService {
     };
 
     /**
-     * Unregister
-     * @param event
-     * @param handler
+     * Unregister a route
+     * @param url you passed when creating the route
      */
     routeOff = (url) => {
         let self = this;
-        let routeReg;
-        console.info("Console --- ", self.routes);
+        let routeReg = "";
 
         Object.keys(self.routes).forEach((r) => {
             if (self.routes[r].routeUrl === url) {
@@ -115,9 +95,8 @@ class HubService {
                 delete self.routes[r];
             }
         });
-        console.info("Console --- ", self.routes);
         Router.remove(routeReg);
     };
 }
 
-export const Hub = new HubService();
+export const HashRouter = new HashRouterService();
