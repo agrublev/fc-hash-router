@@ -1,25 +1,14 @@
 const Router = {
     routes: [],
-    mode: null,
     root: "/",
     config: function (options) {
-        this.mode =
-            options && options.mode && options.mode == "history" && !!history.pushState
-                ? "history"
-                : "hash";
         this.root = options && options.root ? "/" + this.clearSlashes(options.root) + "/" : "/";
         return this;
     },
     getFragment: function () {
         let fragment = "";
-        if (this.mode === "history") {
-            fragment = this.clearSlashes(decodeURI(location.pathname + location.search));
-            fragment = fragment.replace(/\\?(.*)$/, "");
-            fragment = this.root != "/" ? fragment.replace(this.root, "") : fragment;
-        } else {
-            const match = window.location.href.match(/#(.*)$/);
-            fragment = match ? match[1] : "";
-        }
+        const match = window.location.href.match(/#(.*)$/);
+        fragment = match ? match[1] : "";
         return this.clearSlashes(fragment);
     },
     clearSlashes: function (path) {
@@ -46,7 +35,6 @@ const Router = {
     },
     flush: function () {
         this.routes = [];
-        this.mode = null;
         this.root = "/";
         return this;
     },
@@ -82,11 +70,7 @@ const Router = {
     },
     navigate: function (path) {
         path = path ? path : "";
-        if (this.mode === "history") {
-            history.pushState(null, null, this.root + this.clearSlashes(path));
-        } else {
-            window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;
-        }
+        window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;
         return this;
     }
 };

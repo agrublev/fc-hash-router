@@ -24,6 +24,13 @@ class HashRouterService {
         Router.navigate(url);
     };
 
+	/**
+	 * Go back in time
+	 */
+	goBack = () => {
+        window.history.back();
+    };
+
     /**
      * Register route
      * @param url with majic variables like :NameOfVariable for a string OR #nameOfNumberVariable for number
