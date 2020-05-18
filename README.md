@@ -7,6 +7,12 @@
 
 ### ✨ [Demo](https://fc-hash-router.surge.sh)
 
+**OR SANDBOX IT**
+
+https://codesandbox.io/s/fc-hash-router-example-3z0bf
+
+[![Edit fc-hash-router-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/fc-hash-router-example-3z0bf?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Install
 
 ```sh

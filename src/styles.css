@@ -17,6 +17,7 @@ body {
 
 .leftin {
     margin-right: 22px;
+    max-width: 600px;
 }
 #routeJson:empty:before {
     content: "ROUTE PARAMS WILL APPEAR HERE!";

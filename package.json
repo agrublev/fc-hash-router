@@ -9,10 +9,12 @@
         "build:demo": "parcel build index.html --no-cache",
         "release:demo": "npx surge dist fc-hash-router.surge.sh"
     },
-    "dependencies": {
-        "jquery": "3.5.1"
-    },
+    "files": [
+        "build"
+    ],
+    "dependencies": {},
     "devDependencies": {
+        "jquery": "3.5.1",
         "@babel/core": "^7.9.6",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-proposal-decorators": "^7.8.3",
@@ -24,6 +26,7 @@
     },
     "keywords": [
         "javascript",
-        "starter"
+        "router",
+        "hash"
     ]
 }
