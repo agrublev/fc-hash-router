@@ -25,8 +25,28 @@ HashRouter.route(`products/:firstVar/:someVar/bobby/#num/random`, (data) => {
 // Or cooler
 HashRouter.route(`products/:firstVar/:someVar/bobby/#num/random`, ({firstVar,someVar,num}) => {
   	console.info({firstVar,someVar,num});
-});
+});	
 ```
+
+### Then use normal anchor like this
+
+```html
+<a href="#/products/12/22/bobby/123/random">TEST</a>
+```
+
+### OR With Javascript
+
+```js
+HashRouter.navigate(`/products/12/22/bobby/123/random`);
+```
+
+### To unregister a route
+
+```js
+HashRouter.routeOff(`new/#userId`);
+```
+
+THAT EASY!
 
 ## Author
 
