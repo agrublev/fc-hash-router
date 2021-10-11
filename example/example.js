@@ -1,8 +1,6 @@
+import { HashRouter } from "fc-hash-router";
 import jQuery from "jquery";
-import { HashRouter } from "./hashRouter";
-// import { HashRouter } from "../build/index";
 import "./styles.css";
-import Router from "./router";
 
 const $ = jQuery;
 
@@ -16,6 +14,10 @@ $(function () {
 
     $("body").on("click", "#trigger", function () {
         HashRouter.navigate(`/products/${Math.round(Math.random() * 9999)}/22/bobby/123/random`);
+    });
+    $("body").on("click", "#reset", function () {
+        HashRouter.navigate(`/`);
+        history.pushState("", document.title, window.location.pathname + window.location.search);
     });
     $("body").on("click", "#reg", function () {
         HashRouter.route(`new/#userId`, (data) => {

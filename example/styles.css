@@ -1,0 +1,76 @@
+body {
+    font-family: Roboto, sans-serif;
+    line-height: 1.7rem;
+    font-size: 16px;
+}
+
+.wrap {
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+}
+#routeJson {
+    padding: 15px;
+    top: 15px;
+    position: sticky;
+}
+
+.leftin {
+    margin-right: 22px;
+    max-width: 600px;
+}
+#routeJson:empty:before {
+    content: "ROUTE PARAMS WILL APPEAR HERE!";
+}
+
+/* Custom color */
+.button-black {
+    background-color: black;
+    border-color: black;
+}
+.button-black.button-clear,
+.button-black.button-outline {
+    background-color: transparent;
+    color: black;
+}
+.button-black.button-clear {
+    border-color: transparent;
+}
+
+/* Custom size */
+.button-small {
+    font-size: 0.8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    padding: 0 1.5rem;
+}
+
+.button-large {
+    font-size: 1.4rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    padding: 0 2rem;
+}
+
+code {
+    background: #f4f5f6;
+    border-radius: 0.4rem;
+    font-size: 86%;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0;
+    line-height: 1.6em;
+}
+section {
+    border: 0;
+    line-height: 1.6em;
+
+    border-top: 0.1rem solid #f4f5f6;
+    margin: 1rem 0 !important;
+    padding: 2rem 0;
+}
+
+p {
+    margin: 0;
+}
