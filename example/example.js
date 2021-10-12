@@ -1,5 +1,5 @@
-import { HashRouter } from "fc-hash-router";
-// import { HashRouter } from "../src/hashRouter";
+// import { HashRouter } from "fc-hash-router";
+import { HashRouter } from "../src/hashRouter";
 import jQuery from "jquery";
 import "./styles.css";
 

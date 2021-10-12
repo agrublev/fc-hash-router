@@ -71,6 +71,13 @@ const Router = {
     navigate: function (path) {
         path = path ? path : "";
         window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;
+        if (path === "" || path === "/") {
+            history.pushState(
+                "",
+                document.title,
+                window.location.pathname + window.location.search
+            );
+        }
         return this;
     }
 };
