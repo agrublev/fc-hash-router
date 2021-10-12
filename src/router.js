@@ -72,11 +72,7 @@ const Router = {
         path = path ? path : "";
         window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;
         if (path === "" || path === "/") {
-            history.pushState(
-                "",
-                document.title,
-                window.location.pathname + window.location.search
-            );
+            history.replaceState(null, null, " ");
         }
         return this;
     }
