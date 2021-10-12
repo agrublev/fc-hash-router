@@ -1,6 +1,6 @@
 {
     "name": "fc-hash-router",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "The godliest of routers!",
     "main": "build/index.js",
     "scripts": {

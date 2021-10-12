@@ -24,10 +24,10 @@ class HashRouterService {
         Router.navigate(url);
     };
 
-	/**
-	 * Go back in time
-	 */
-	goBack = () => {
+    /**
+     * Go back in time
+     */
+    goBack = () => {
         window.history.back();
     };
 
@@ -86,6 +86,7 @@ class HashRouterService {
             }
             handler(resp);
         }).listen();
+        Router.check();
     };
 
     /**

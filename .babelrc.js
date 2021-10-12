@@ -18,12 +18,6 @@ module.exports = {
 			}
 		],
 		["@babel/plugin-syntax-class-properties"],
-		[
-			"@babel/plugin-proposal-class-properties",
-			{
-				loose: true
-			}
-		],
 		"@babel/plugin-transform-runtime",
 	]
 };
