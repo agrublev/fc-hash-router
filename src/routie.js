@@ -36,7 +36,7 @@ const Routie = function (w, isModule) {
 		const c = this.fns.length;
 		for (; i < c; i++) {
 			this.fns[i].apply(this, params);
-		}
+		}//lll
 	};
 
 	Route.prototype.match = function (path, params) {
@@ -137,8 +137,7 @@ const Routie = function (w, isModule) {
 
 	routie.removeAll = function () {
 		map = {};
-		routes = [];
-	};
+		routes = [];//lll//lll	};
 
 	routie.navigate = function (path, options) {
 		options = options || {};
