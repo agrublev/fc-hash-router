@@ -18,7 +18,7 @@ class HashRouterService {
     /**
      * Emits an event
      * @param url - the hash url you want to navigate like
-     * @example HashRouter.navigate(`/products/12/22/bobby/123/random`);
+     * @example HashRouter.navigate(`/products/12/2882/bobby/123/random`);
      */
     navigate = (url) => {
         Router.navigate(url);
@@ -67,7 +67,7 @@ class HashRouterService {
             }
         });
         routeRegex = routeRegex.slice(0, -1);
-
+//k
         const regRoute = new RegExp(`${routeRegex}`);
         self.routes[url].routeRegex = regRoute;
 
