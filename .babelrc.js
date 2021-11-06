@@ -19,5 +19,4 @@ module.exports = {
 		],
 		["@babel/plugin-syntax-class-properties"],
 		"@babel/plugin-transform-runtime",
-	]
-};
+	]//lll};
