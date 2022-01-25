@@ -1,10 +1,11 @@
 {
     "name": "fc-hash-router",
-    "version": "1.0.5",
+    "version": "1.0.6",
+    "browserslist": "> 0.5%, last 2 versions, not dead",
     "description": "The godliest of routers!",
     "main": "build/index.js",
     "scripts": {
-        "start": "parcel example/index.html --open --no-cache",
+        "start": "parcel example/index.html --port 1212 --open --no-cache",
         "build": "parcel build src/hashRouter.js --target node  --bundle-node-modules --no-cache --no-source-maps -o index.js -d build",
         "build:demo": "parcel build example/index.html --no-cache --no-minify",
         "release:demo": "npx surge dist fc-hash-router.surge.sh"
@@ -23,7 +24,7 @@
         "docdash": "^1.2.0",
         "fc-hash-router": "^1.0.4",
         "jquery": "3.5.1",
-        "parcel-bundler": "^1.12.5",
+        "parcel": "^2.2.1",
         "prettier": "^2.0.5"
     },
     "keywords": [

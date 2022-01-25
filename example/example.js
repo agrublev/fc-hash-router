@@ -6,8 +6,13 @@ import "./styles.css";
 const $ = jQuery;
 
 $(function () {
+    HashRouter.route(`products`, (data) => {
+        console.info("products plain", data);
+        $("#routeJson").html(`${JSON.stringify(data, null, 4)}`);
+    });
+
     HashRouter.route(`products/:firstVar/:someVar/bobby/#num/random`, (data) => {
-        console.info(data);
+        console.info("products advanced", data);
         $("#routeJson").html(`${JSON.stringify(data, null, 4)}`);
     });
 

@@ -42,7 +42,11 @@ const Router = {
         const fragment = f || this.getFragment();
         for (let i = 0; i < this.routes.length; i++) {
             const match = fragment.match(this.routes[i].re);
-            if (match) {
+            if (
+                match &&
+                fragment.split("/").length ===
+                    this.routes[i].re.toString().slice(1, -1).split("/").length
+            ) {
                 match.shift();
                 const segs = [];
                 for (let i in match) {
