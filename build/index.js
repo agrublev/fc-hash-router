@@ -1,7 +1,189 @@
-parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"IxO8":[function(require,module,exports) {
-function e(e,o,r){return o in e?Object.defineProperty(e,o,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[o]=r,e}module.exports=e,module.exports.default=module.exports,module.exports.__esModule=!0;
-},{}],"hPM2":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const t={routes:[],root:"/",config:function(t){return this.root=t&&t.root?"/"+this.clearSlashes(t.root)+"/":"/",this},getFragment:function(){let t="";const e=window.location.href.match(/#(.*)$/);return t=e?e[1]:"",this.clearSlashes(t)},clearSlashes:function(t){return t.toString().replace(/\/$/,"").replace(/^\//,"")},add:function(t,e,r){return"function"==typeof t&&(r=t,t=""),this.routes.push({re:t,original:e,handler:r}),this},remove:function(t){let e,r=0;for(;this.routes.length,e=this.routes[r];r++)if(e.handler===t||e.re.toString()===t.toString())return this.routes.splice(r,1),this;return this},flush:function(){return this.routes=[],this.root="/",this},check:function(t){const e=t||this.getFragment();for(let r=0;r<this.routes.length;r++){const t=e.match(this.routes[r].re);if(t&&e.split("/").length===this.routes[r].re.toString().slice(1,-1).split("/").length){t.shift();const e=[];for(let r in t)e.push(t[r]);return this.routes[r].handler.apply({},[this.routes[r].original,...t]),this}}return this},listen:function(){const t=this;let e=t.getFragment();return clearInterval(this.interval),this.interval=setInterval(function(){e!==t.getFragment()&&(e=t.getFragment(),t.check(e))},50),this},navigate:function(t){return t=t||"",window.location.href=window.location.href.replace(/#(.*)$/,"")+"#"+t,""!==t&&"/"!==t||history.replaceState(null,null," "),this}};var e=t;exports.default=e;
-},{}],"dWLy":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.HashRouter=void 0;var e=s(require("@babel/runtime/helpers/defineProperty")),t=s(require("./router.js"));function s(e){return e&&e.__esModule?e:{default:e}}class r{constructor(){return(0,e.default)(this,"routes",{}),(0,e.default)(this,"navigate",e=>{t.default.navigate(e)}),(0,e.default)(this,"goBack",()=>{window.history.back()}),(0,e.default)(this,"route",(e,s)=>{let r=this;const u=e.split("/");let o="";this.routes[e]={routeUrl:e,handler:s,segmentHandlers:{},numberOfSegments:u.length};let a=1;u.forEach((t,s)=>{t.startsWith("#")?(this.routes[e].segmentHandlers[t.replace("#","")]={type:"number",segNum:a},a++,o+="([0-9]+)/"):t.startsWith(":")?(this.routes[e].segmentHandlers[t.replace(":","")]={type:"string",segNum:a},a++,o+="(.*)/"):o+=`${t}/`}),o=o.slice(0,-1);const n=new RegExp(`${o}`);r.routes[e].routeRegex=n,t.default.add(n,e,function(...e){let t=e[0];const u=r.routes[t],o={};let a=u.segmentHandlers;for(let s in e)Object.keys(a).forEach(t=>{parseInt(a[t].segNum)===parseInt(s)&&(o[t]="number"===a[t].type?parseInt(e[s]):e[s])});s(o)}).listen(),t.default.check()}),(0,e.default)(this,"routeOff",e=>{let s=this,r="";Object.keys(s.routes).forEach(t=>{s.routes[t].routeUrl===e&&(r=s.routes[t].routeRegex,delete s.routes[t])}),t.default.remove(r)}),t.default.config({mode:"hash"}),this}}const u=new r;exports.HashRouter=u;
-},{"@babel/runtime/helpers/defineProperty":"IxO8","./router.js":"hPM2"}]},{},["dWLy"], null)
+var $jtWlF$swchelpers = require("@swc/helpers");
+
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+}
+
+$parcel$export(module.exports, "HashRouter", function () { return $0195d6fb121e4577$export$7221d69dcfc8e36b; });
+
+
+var $1c6312a031d4fa7a$var$Router = {
+    routes: [],
+    root: "/",
+    config: function config(options) {
+        this.root = options && options.root ? "/" + this.clearSlashes(options.root) + "/" : "/";
+        return this;
+    },
+    getFragment: function getFragment() {
+        var fragment = "";
+        var match = window.location.href.match(/#(.*)$/);
+        fragment = match ? match[1] : "";
+        return this.clearSlashes(fragment);
+    },
+    clearSlashes: function clearSlashes(path) {
+        return path.toString().replace(/\/$/, "").replace(/^\//, "");
+    },
+    add: function add(re, orig, handler) {
+        if (typeof re == "function") {
+            handler = re;
+            re = "";
+        }
+        this.routes.push({
+            re: re,
+            original: orig,
+            handler: handler
+        });
+        return this;
+    },
+    remove: function remove(param) {
+        var i = 0, r;
+        for(; this.routes.length, r = this.routes[i]; i++)if (r.handler === param || r.re.toString() === param.toString()) {
+            this.routes.splice(i, 1);
+            return this;
+        }
+        return this;
+    },
+    flush: function flush() {
+        this.routes = [];
+        this.root = "/";
+        return this;
+    },
+    check: function check(f) {
+        var fragment = f || this.getFragment();
+        for(var i = 0; i < this.routes.length; i++){
+            var match = fragment.match(this.routes[i].re);
+            if (match && fragment.split("/").length === this.routes[i].re.toString().slice(1, -1).split("/").length) {
+                match.shift();
+                var segs = [];
+                for(var i1 in match)segs.push(match[i1]);
+                this.routes[i].handler.apply({
+                }, [
+                    this.routes[i].original
+                ].concat($jtWlF$swchelpers.toConsumableArray(match)));
+                return this;
+            }
+        }
+        return this;
+    },
+    listen: function listen() {
+        var self = this;
+        var current = self.getFragment();
+        var fn = function fn() {
+            if (current !== self.getFragment()) {
+                current = self.getFragment();
+                self.check(current);
+            }
+        };
+        clearInterval(this.interval);
+        this.interval = setInterval(fn, 50);
+        return this;
+    },
+    navigate: function navigate(path) {
+        path = path ? path : "";
+        window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;
+        if (path === "" || path === "/") history.replaceState(null, null, " ");
+        return this;
+    }
+};
+var $1c6312a031d4fa7a$export$2e2bcd8739ae039 = $1c6312a031d4fa7a$var$Router;
+
+
+var $0195d6fb121e4577$var$HashRouterService = function $0195d6fb121e4577$var$HashRouterService() {
+    "use strict";
+    var _this = this;
+    $jtWlF$swchelpers.classCallCheck(this, $0195d6fb121e4577$var$HashRouterService);
+    $jtWlF$swchelpers.defineProperty(this, /**
+   * All registered routes
+   * @type {{}}
+   */ "routes", {
+    });
+    $jtWlF$swchelpers.defineProperty(this, /**
+   * Emits an event
+   * @param url - the hash url you want to navigate like
+   * @example HashRouter.navigate(`/products/12/22/bobby/123/random`);
+   */ "navigate", function(url) {
+        $1c6312a031d4fa7a$export$2e2bcd8739ae039.navigate(url);
+    });
+    $jtWlF$swchelpers.defineProperty(this, /**
+   * Go back in time
+   */ "goBack", function() {
+        window.history.back();
+    });
+    $jtWlF$swchelpers.defineProperty(this, /**
+   * Register route
+   * @param url with majic variables like :NameOfVariable for a string OR #nameOfNumberVariable for number
+   * @param handler to be called back with route data
+   */ "route", function(url, handler) {
+        var _this1 = _this;
+        var self = _this;
+        var segments = url.split("/");
+        var routeRegex = "";
+        _this.routes[url] = {
+            routeUrl: url,
+            handler: handler,
+            segmentHandlers: {
+            },
+            numberOfSegments: segments.length
+        };
+        var currentSegVar = 1;
+        segments.forEach(function(seg, ind) {
+            if (seg.startsWith("#")) {
+                _this1.routes[url].segmentHandlers[seg.replace("#", "")] = {
+                    type: "number",
+                    segNum: currentSegVar
+                };
+                currentSegVar++;
+                routeRegex += "([0-9]+)/";
+            } else if (seg.startsWith(":")) {
+                _this1.routes[url].segmentHandlers[seg.replace(":", "")] = {
+                    type: "string",
+                    segNum: currentSegVar
+                };
+                currentSegVar++;
+                routeRegex += "(.*)/";
+            } else routeRegex += "".concat(seg, "/");
+        });
+        routeRegex = routeRegex.slice(0, -1);
+        var regRoute = new RegExp("".concat(routeRegex));
+        self.routes[url].routeRegex = regRoute;
+        $1c6312a031d4fa7a$export$2e2bcd8739ae039.add(regRoute, url, function() {
+            var _loop = function(i) {
+                Object.keys(handlers).forEach(function(name) {
+                    if (parseInt(handlers[name].segNum) === parseInt(i)) resp[name] = handlers[name].type === "number" ? parseInt(info[i]) : info[i];
+                });
+            };
+            for(var _len = arguments.length, info = new Array(_len), _key = 0; _key < _len; _key++){
+                info[_key] = arguments[_key];
+            }
+            var routeName = info[0];
+            var routeMatched = self.routes[routeName];
+            var resp = {
+            };
+            var handlers = routeMatched.segmentHandlers;
+            for(var i in info)_loop(i);
+            handler(resp);
+        }).listen();
+        $1c6312a031d4fa7a$export$2e2bcd8739ae039.check();
+    });
+    $jtWlF$swchelpers.defineProperty(this, /**
+   * Unregister a route
+   * @param url you passed when creating the route
+   */ "routeOff", function(url) {
+        var self = _this;
+        var routeReg = "";
+        Object.keys(self.routes).forEach(function(r) {
+            if (self.routes[r].routeUrl === url) {
+                routeReg = self.routes[r].routeRegex;
+                delete self.routes[r];
+            }
+        });
+        $1c6312a031d4fa7a$export$2e2bcd8739ae039.remove(routeReg);
+    });
+    $1c6312a031d4fa7a$export$2e2bcd8739ae039.config({
+        mode: "hash"
+    });
+    return this;
+};
+var $0195d6fb121e4577$export$7221d69dcfc8e36b = new $0195d6fb121e4577$var$HashRouterService();
+
+

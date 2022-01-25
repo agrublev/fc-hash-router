@@ -1,19 +1,21 @@
 {
     "name": "fc-hash-router",
-    "version": "1.0.6",
+    "version": "1.0.8",
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "description": "The godliest of routers!",
     "main": "build/index.js",
     "scripts": {
         "start": "parcel example/index.html --port 1212 --open --no-cache",
-        "build": "parcel build src/hashRouter.js --target node  --bundle-node-modules --no-cache --no-source-maps -o index.js -d build",
+        "build": "parcel build src/hashRouter.js --no-cache --no-source-maps --dist-dir build",
         "build:demo": "parcel build example/index.html --no-cache --no-minify",
         "release:demo": "npx surge dist fc-hash-router.surge.sh"
     },
     "files": [
         "build"
     ],
-    "dependencies": {},
+    "dependencies": {
+        "@swc/helpers": "^0.3.2"
+    },
     "devDependencies": {
         "@babel/core": "^7.15.8",
         "@babel/plugin-proposal-class-properties": "^7.14.5",
