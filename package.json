@@ -7,13 +7,20 @@
     "scripts": {
         "start": "parcel example/index.html --port 1212 --open --no-cache",
         "build": "parcel build src/hashRouter.js --no-cache --no-source-maps --dist-dir build",
-        "build:demo": "parcel build example/index.html --no-cache --no-minify",
+        "build:demo": "parcel build --target web --no-cache",
         "release:demo": "npx surge dist fc-hash-router.surge.sh"
     },
     "files": [
         "build"
     ],
+    "targets": {
+        "web": {
+            "source": "example/index.html",
+            "distDir": "./dist"
+        }
+    },
     "dependencies": {
+        "jquery": "3.5.1",
         "@swc/helpers": "^0.3.2"
     },
     "devDependencies": {
@@ -25,7 +32,6 @@
         "@babel/preset-env": "^7.15.8",
         "docdash": "^1.2.0",
         "fc-hash-router": "^1.0.4",
-        "jquery": "3.5.1",
         "parcel": "^2.2.1",
         "prettier": "^2.0.5"
     },

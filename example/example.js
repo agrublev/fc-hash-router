@@ -17,8 +17,15 @@ $(function () {
     });
 
     $("body").on("click", "#trigger", function () {
-        HashRouter.navigate(`/products/${Math.round(Math.random() * 9999)}/22/bobby/123/random`);
+        HashRouter.navigate(
+            `/products/12/22/bobby/${Math.round(Math.random() * 99999)}/random`
+        );
     });
+
+    $("body").on("click", "#trigger1", function () {
+        HashRouter.navigate(`/products`);
+    });
+
     $("body").on("click", "#reset", function () {
         HashRouter.navigate(`/`);
         history.pushState("", document.title, window.location.pathname + window.location.search);
