@@ -23,7 +23,7 @@
         "docdash": "^1.2.0",
         "fc-hash-router": "^1.0.4",
         "jquery": "3.5.1",
-        "parcel-bundler": "^1.6.1",
+        "parcel-bundler": "^1.12.5",
         "prettier": "^2.0.5"
     },
     "keywords": [
