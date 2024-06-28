@@ -1,7 +1,6 @@
 import React from "react";
 import MyContext from "./FcRouterContext";
 import { FcRouter } from "./FcRouter";
-import Router from "./router";
 
 class FcRouterProvider extends React.Component {
     state = {
@@ -15,7 +14,6 @@ class FcRouterProvider extends React.Component {
     }
     navHandle = (event) => {
         const url = new URL(event.destination.url);
-        // console.log("FcRouter", FcRouter, Router.check());
         this.setState({
             route: url.hash.substring(1)
         });
@@ -25,6 +23,7 @@ class FcRouterProvider extends React.Component {
         return (
             <MyContext.Provider
                 value={{
+                    routes: FcRouter.routes,
                     render: FcRouter.routes[window.location.hash.substring(1)] ? (
                         FcRouter.routes[window.location.hash.substring(1)].handler()
                     ) : (

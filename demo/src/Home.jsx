@@ -1,23 +1,14 @@
 import { Component } from "react";
 import { FcRouter, injectRouter } from "../../src/index";
-@injectRouter
-class Sub extends Component {
-    render() {
-        return <div>SAD</div>;
-    }
-}
-
-FcRouter.route(`/home/sub`, () => {
-    return <Sub />;
-});
+import { Sub } from "./Sub";
 @injectRouter
 export class Home extends Component {
     render() {
-        console.log("home", this.props);
         return (
-            <div>
-                <h1>HOME</h1>
+            <div className={"cont"}>
+                <h2>HOME</h2>
                 <button
+                    className={"btn"}
                     onClick={(e) => {
                         this.props.fcRouter.navigate(`/home/sub`);
                         FcRouter.routeOff(`/main`);

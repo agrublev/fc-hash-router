@@ -1,5 +1,4 @@
 import { Component } from "react";
-import "./App.css";
 import { Home } from "./Home";
 import { Main } from "./Main";
 import { injectRouter, FcRouter } from "../../src/index";
@@ -15,8 +14,9 @@ FcRouter.setRoutes([
 @injectRouter
 class App extends Component {
     render() {
+        console.log("", this.props);
         return (
-            <div className="App">
+            <div className="cont">
                 <div className={"menu"}>
                     <button
                         onClick={(e) => {
@@ -26,6 +26,7 @@ class App extends Component {
                         BACK
                     </button>
                     <button
+                        className={`${this.props.fcRouter.route === "/test" ? "active" : ""}`}
                         onClick={(e) => {
                             this.props.fcRouter.navigate(`/test`);
                         }}
@@ -33,6 +34,7 @@ class App extends Component {
                         TEST
                     </button>
                     <button
+                        className={`${this.props.fcRouter.route === "/home" ? "active" : ""}`}
                         onClick={(e) => {
                             this.props.fcRouter.navigate(`/home`);
                         }}
@@ -40,6 +42,7 @@ class App extends Component {
                         HOME
                     </button>
                     <button
+                        className={`${this.props.fcRouter.route === "/main" ? "active" : ""}`}
                         onClick={(e) => {
                             this.props.fcRouter.navigate(`/main`);
                         }}
