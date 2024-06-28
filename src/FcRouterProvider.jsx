@@ -23,6 +23,7 @@ class FcRouterProvider extends React.Component {
         return (
             <MyContext.Provider
                 value={{
+                    data: { ...FcRouter.data },
                     routes: FcRouter.routes,
                     render: FcRouter.routes[window.location.hash.substring(1)] ? (
                         FcRouter.routes[window.location.hash.substring(1)].handler()
@@ -33,8 +34,8 @@ class FcRouterProvider extends React.Component {
                     goBack: () => {
                         FcRouter.goBack();
                     },
-                    navigate: (route) => {
-                        FcRouter.navigate(route);
+                    navigate: (route, data) => {
+                        FcRouter.navigate(route, data);
                     }
                 }}
             >

@@ -14,7 +14,6 @@ FcRouter.setRoutes([
 @injectRouter
 class App extends Component {
     render() {
-        console.log("", this.props);
         return (
             <div className="cont">
                 <div className={"menu"}>
@@ -36,7 +35,7 @@ class App extends Component {
                     <button
                         className={`${this.props.fcRouter.route === "/home" ? "active" : ""}`}
                         onClick={(e) => {
-                            this.props.fcRouter.navigate(`/home`);
+                            this.props.fcRouter.navigate(`/home`, { sad: 22, zzz: 99999 });
                         }}
                     >
                         HOME

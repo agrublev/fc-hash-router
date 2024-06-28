@@ -20,8 +20,9 @@ class FcRouterClass {
      * @param url - the hash url you want to navigate like
      * @example HashRouter.navigate(`/products/12/22/bobby/123/random`);
      */
-    navigate = (url) => {
-        Router.navigate(url);
+    navigate = (url, data) => {
+        Router.navigate(url, data);
+        this.data = data;
     };
 
     /**

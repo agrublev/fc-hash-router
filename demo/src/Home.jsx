@@ -4,6 +4,8 @@ import { Sub } from "./Sub";
 @injectRouter
 export class Home extends Component {
     render() {
+        console.log("", this.props);
+
         return (
             <div className={"cont"}>
                 <h2>HOME</h2>
