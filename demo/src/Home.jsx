@@ -11,7 +11,7 @@ FcRouter.route(`/home/sub`, () => {
     return <Sub />;
 });
 @injectRouter
-export class HOME extends Component {
+export class Home extends Component {
     render() {
         console.log("home", this.props);
         return (

@@ -1,33 +1,27 @@
 import React from "react";
 import MyContext from "./FcRouterContext";
 import { FcRouter } from "./FcRouter";
+import Router from "./router";
 
 class FcRouterProvider extends React.Component {
     state = {
-        route: window.location.hash.substring(1),
-        // your state here
+        route: window.location.hash.substring(1)
     };
     componentDidMount() {
-        window.navigation.addEventListener("navigate", (event) => {
-            const url = new URL(event.destination.url);
-            this.setState({
-                route: url.hash.substring(1),
-            }); // console.log("location changed!");
-        });
-
-        window.addEventListener(
-            "hashchange",
-            () => {
-                console.log("The hash has changed!");
-            },
-            false
-        );
+        window.navigation.addEventListener("navigate", this.navHandle);
     }
-
-    // methods for updating state here
+    componentWillUnmount() {
+        document.removeEventListener("navigate", this.navHandle, false);
+    }
+    navHandle = (event) => {
+        const url = new URL(event.destination.url);
+        // console.log("FcRouter", FcRouter, Router.check());
+        this.setState({
+            route: url.hash.substring(1)
+        });
+    };
 
     render() {
-        console.log("aa", this.props);
         return (
             <MyContext.Provider
                 value={{
@@ -42,12 +36,7 @@ class FcRouterProvider extends React.Component {
                     },
                     navigate: (route) => {
                         FcRouter.navigate(route);
-                        // this.setState({
-                        //     route: HashRouter.routes[window.location.hash.substring(1)].handler(),
-                        // });
-                        // this.forceUpdate();
-                    },
-                    // reference methods here
+                    }
                 }}
             >
                 <div {...this.props.renderCustom}>

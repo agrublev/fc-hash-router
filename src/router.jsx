@@ -38,40 +38,27 @@ const Router = {
         this.root = "/";
         return this;
     },
-    check: function (f) {
-        const fragment = f || this.getFragment();
-        for (let i = 0; i < this.routes.length; i++) {
-            const match = fragment.match(this.routes[i].re);
-            if (
-                match &&
-                fragment.split("/").length ===
-                    this.routes[i].re.toString().slice(1, -1).split("/").length
-            ) {
-                match.shift();
-                const segs = [];
-                for (let i in match) {
-                    segs.push(match[i]);
-                }
-
-                this.routes[i].handler.apply({}, [this.routes[i].original, ...match]);
-                return this;
-            }
-        }
-        return this;
-    },
-    listen: function () {
-        const self = this;
-        let current = self.getFragment();
-        const fn = function () {
-            if (current !== self.getFragment()) {
-                current = self.getFragment();
-                self.check(current);
-            }
-        };
-        clearInterval(this.interval);
-        this.interval = setInterval(fn, 50);
-        return this;
-    },
+    // check: function (f) {
+    //     const fragment = f || this.getFragment();
+    //     for (let i = 0; i < this.routes.length; i++) {
+    //         const match = fragment.match(this.routes[i].re);
+    //         if (
+    //             match &&
+    //             fragment.split("/").length ===
+    //                 this.routes[i].re.toString().slice(1, -1).split("/").length
+    //         ) {
+    //             match.shift();
+    //             const segs = [];
+    //             for (let i in match) {
+    //                 segs.push(match[i]);
+    //             }
+    //
+    //             this.routes[i].handler.apply({}, [this.routes[i].original, ...match]);
+    //             return this;
+    //         }
+    //     }
+    //     return this;
+    // },
     navigate: function (path) {
         path = path ? path : "";
         window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;

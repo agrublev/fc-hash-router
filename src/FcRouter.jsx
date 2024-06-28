@@ -31,6 +31,12 @@ class FcRouterClass {
         window.history.back();
     };
 
+    setRoutes = (routes) => {
+        routes.forEach(({ url, component }) => {
+            this.route(url, () => component);
+        });
+    };
+
     /**
      * Register route
      * @param url with majic variables like :NameOfVariable for a string OR #nameOfNumberVariable for number
@@ -85,8 +91,8 @@ class FcRouterClass {
                 });
             }
             handler(resp);
-        }).listen();
-        Router.check();
+        });
+        // Router.check();
     };
 
     /**
@@ -104,7 +110,6 @@ class FcRouterClass {
             }
         });
         Router.remove(routeReg);
-        console.log(self.routes, "self.routes[r].routeUrl", Router);
     };
 }
 
