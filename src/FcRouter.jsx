@@ -1,9 +1,9 @@
-import Router from "./router.js";
+import Router from "./router";
 
 /**
  * Hash Router service
  */
-class HashRouterService {
+class FcRouterClass {
     constructor() {
         Router.config({ mode: "hash" });
         return this;
@@ -36,7 +36,7 @@ class HashRouterService {
      * @param url with majic variables like :NameOfVariable for a string OR #nameOfNumberVariable for number
      * @param handler to be called back with route data
      */
-    route = (url, handler) => {
+    route = (url, handler = () => {}) => {
         let self = this;
         const segments = url.split("/");
         let routeRegex = ``;
@@ -104,7 +104,8 @@ class HashRouterService {
             }
         });
         Router.remove(routeReg);
+        console.log(self.routes, "self.routes[r].routeUrl", Router);
     };
 }
 
-export const HashRouter = new HashRouterService();
+export const FcRouter = new FcRouterClass();
