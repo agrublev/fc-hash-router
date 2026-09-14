@@ -1,5 +1,17 @@
+/**
+ * Router is a simple JavaScript hash-based routing function.
+ * It provides route adding, removing, navigating and flushing routes.
+ */
 const Router = {
+    /**
+     * An array to hold the routes.
+     * Each route is an object with the properties 're', 'original' and 'handler'.
+     */
     routes: [],
+
+    /**
+     * The base url of the router. By default, it's set to "/".
+     */
     root: "/",
     config: function (options) {
         this.root = options && options.root ? "/" + this.clearSlashes(options.root) + "/" : "/";
@@ -38,27 +50,6 @@ const Router = {
         this.root = "/";
         return this;
     },
-    // check: function (f) {
-    //     const fragment = f || this.getFragment();
-    //     for (let i = 0; i < this.routes.length; i++) {
-    //         const match = fragment.match(this.routes[i].re);
-    //         if (
-    //             match &&
-    //             fragment.split("/").length ===
-    //                 this.routes[i].re.toString().slice(1, -1).split("/").length
-    //         ) {
-    //             match.shift();
-    //             const segs = [];
-    //             for (let i in match) {
-    //                 segs.push(match[i]);
-    //             }
-    //
-    //             this.routes[i].handler.apply({}, [this.routes[i].original, ...match]);
-    //             return this;
-    //         }
-    //     }
-    //     return this;
-    // },
     navigate: function (path) {
         path = path ? path : "";
         window.location.href = window.location.href.replace(/#(.*)$/, "") + "#" + path;

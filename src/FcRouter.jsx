@@ -32,6 +32,21 @@ class FcRouterClass {
         window.history.back();
     };
 
+    /**
+     * Sets the given routes
+     *
+     * @param {Array} routes - Array containing the new routes. Each element in the
+     * array must be an object with `url` and `component` properties. The `url`
+     * represents route URL and the `component` is the React component to be
+     * rendered when that route is navigated to.
+     *  @example
+     *  FcRouter.setRoutes([
+     *     { url: "/home", component: <Home /> },
+     *     { url: "/main", component: <Main /> },
+     *     { url: "/test", component: <Test /> },
+     *     { url: "/", component: <div>EMPTY</div> },
+     * ]);
+     */
     setRoutes = (routes) => {
         routes.forEach(({ url, component }) => {
             this.route(url, () => component);
@@ -45,12 +60,12 @@ class FcRouterClass {
      */
     route = (url, handler = () => {}) => {
         let self = this;
-        const segments = url.split("/");
-        let routeRegex = ``;
+        const segments = url.split("/"); // Split the URL into segments
+        let routeRegex = ``; // Initialize route regex
         this.routes[url] = {
             routeUrl: url,
             handler,
-            segmentHandlers: {},
+            segmentHandlers: {}, // Initialize segment handlers
             numberOfSegments: segments.length
         };
         let currentSegVar = 1;
@@ -76,8 +91,9 @@ class FcRouterClass {
         routeRegex = routeRegex.slice(0, -1);
 
         const regRoute = new RegExp(`${routeRegex}`);
-        self.routes[url].routeRegex = regRoute;
+        self.routes[url].routeRegex = regRoute; // Save the regex to routes
 
+        // Add the route to HashRouter
         Router.add(regRoute, url, function (...info) {
             let routeName = info[0];
             const routeMatched = self.routes[routeName];
@@ -93,7 +109,6 @@ class FcRouterClass {
             }
             handler(resp);
         });
-        // Router.check();
     };
 
     /**
